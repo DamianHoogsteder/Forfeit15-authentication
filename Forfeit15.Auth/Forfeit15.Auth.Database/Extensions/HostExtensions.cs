@@ -3,7 +3,7 @@ using Forfeit15.Postgres.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Forfeit15.Auth.Postgres.Extensions;
+namespace Forfeit15.Auth.Database.Extensions;
 
 public static class HostExtensions
 {
@@ -13,6 +13,6 @@ public static class HostExtensions
         var dbContext = scope.ServiceProvider.GetRequiredService<UserMetaDataDbContext>();
          
         // Migrate the database to the latest version
-        host.MigrateDatabase<PatchNoteDbContext>();
+        host.MigrateDatabase<UserMetaDataDbContext>();
     }
 }

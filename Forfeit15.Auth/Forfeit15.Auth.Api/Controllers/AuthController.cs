@@ -1,5 +1,4 @@
-﻿using Forfeit15.Auth.Core.Api.Services.UserMetaData;
-using Forfeit15.Postgres.Models.UserMetaData;
+﻿using Forfeit15.Auth.Core.Services.UserMetaData;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forfeit15.Auth.Api.Controllers;

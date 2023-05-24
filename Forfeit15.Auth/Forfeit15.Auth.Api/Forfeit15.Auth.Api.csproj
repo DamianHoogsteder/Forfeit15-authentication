@@ -13,6 +13,8 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Forfeit15.Auth.Core.Api\Forfeit15.Auth.Core.Api.csproj" />
+      <ProjectReference Include="..\Forfeit15.Auth.Core\Forfeit15.Auth.Core.csproj" />
+      <ProjectReference Include="..\Forfeit15.Auth.Database\Forfeit15.Auth.Database.csproj" />
       <ProjectReference Include="..\Forfeit15.Auth.Postgres\Forfeit15.Auth.Postgres.csproj" />
     </ItemGroup>
 </Project>

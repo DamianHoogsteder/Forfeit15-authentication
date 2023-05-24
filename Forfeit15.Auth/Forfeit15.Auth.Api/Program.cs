@@ -1,7 +1,7 @@
 using Forfeit15.Postgres.Extensions;
 using System.Text.Json.Serialization;
-using Forfeit15.Auth.Core.Api.Profiles;
-using Forfeit15.Auth.Postgres.Extensions;
+using Forfeit15.Auth.Core.Profiles;
+using Forfeit15.Auth.Database.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
