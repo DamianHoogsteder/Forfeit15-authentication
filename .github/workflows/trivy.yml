@@ -1,4 +1,4 @@
-name: Trivy container scannign
+name: Trivy container scanning
 
 on:
   push:
