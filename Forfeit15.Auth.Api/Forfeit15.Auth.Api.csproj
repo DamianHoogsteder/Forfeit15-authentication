@@ -4,17 +4,20 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-        <PackageReference Include="Forfeit15.Postgres" Version="1.0.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Forfeit15.Auth.Core.Api\Forfeit15.Auth.Core.Api.csproj" />
       <ProjectReference Include="..\Forfeit15.Auth.Core\Forfeit15.Auth.Core.csproj" />
       <ProjectReference Include="..\Forfeit15.Auth.Database\Forfeit15.Auth.Database.csproj" />
-      <ProjectReference Include="..\Forfeit15.Auth.Postgres\Forfeit15.Auth.Postgres.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 </Project>
