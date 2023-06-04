@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="12.0.1" />
-      <PackageReference Include="Forfeit15.Postgres" Version="1.0.1" />
       <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
     </ItemGroup>
 

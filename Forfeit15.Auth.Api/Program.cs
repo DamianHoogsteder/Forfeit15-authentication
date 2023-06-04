@@ -1,11 +1,9 @@
-using Forfeit15.Postgres.Extensions;
 using System.Text.Json.Serialization;
 using Forfeit15.Auth.Core.Profiles;
-using Forfeit15.Auth.Database.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddUserMetaDataPostgres(builder.Configuration);
+// builder.Services.AddUserMetaDataPostgres(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(UserMetaDataProfile));
 
@@ -34,6 +32,6 @@ app.UseCors(x => x
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MigrateDatabases();
+// app.MigrateDatabases();
 app.MapControllers();
 app.Run();
