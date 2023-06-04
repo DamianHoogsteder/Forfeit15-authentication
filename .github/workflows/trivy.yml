@@ -1,42 +1,28 @@
 name: Trivy container scanning
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  schedule:
-    - cron: '18 12 * * 2'
-
-permissions:
-  contents: read
-
+on: [push, pull_request]
+env:
+  TRIVY_VERSION: 0.40.0
+  BATS_LIB_PATH: '/usr/lib/'
 jobs:
   build:
-    permissions:
-      contents: read
-      security-events: write 
-      actions: read 
-    name: Build
-    runs-on: "ubuntu-18.04"
+    name: build
+    runs-on: ubuntu-20.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
-      - name: Build an image from Dockerfile
+      - name: Setup BATS
+        uses: mig4/setup-bats@v1
+        with:
+          bats-version: 1.7.0
+
+      - name: Setup Bats libs
+        uses: brokenpip3/setup-bats-libs@0.1.0
+
+      - name: Check out code
+        uses: actions/checkout@v1
+
+      - name: Install Trivy
         run: |
-          docker build -t docker.io/my-organization/my-app:${{ github.sha }} .
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v${{ env.TRIVY_VERSION }}
 
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
-        with:
-          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
-          format: 'template'
-          template: '@/contrib/sarif.tpl'
-          output: 'trivy-results.sarif'
-          severity: 'CRITICAL,HIGH'
-
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: 'trivy-results.sarif'
+      - name: Test
+        run: BATS_LIB_PATH=${{ env.BATS_LIB_PATH }} bats --recursive --timing .
