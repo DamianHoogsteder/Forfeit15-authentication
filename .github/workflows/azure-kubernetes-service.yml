@@ -1,4 +1,4 @@
-name: Build and deploy to AKS [Forfeit15-Auth]
+name: Deploy on Kubernetes Service
 
 on:
   push:
