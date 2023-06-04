@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forfeit15-auth-deployment
+  labels:
+    app: forfeit15-auth
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: forfeit15-auth
+  template:
+    metadata:
+      labels:
+        app: forfeit15-auth
+    spec:
+      containers:
+        - name: forfeit15-auth
+          image: zephtos/forfeit15-auth:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
